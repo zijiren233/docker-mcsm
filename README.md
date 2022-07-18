@@ -1,4 +1,18 @@
-# docker-mcsm_releases
+# 使用 docker-compose 一键启动
+
+```shell
+
+请先安装 docker-compose 程序！！！
+
+例如在 debian 11 系统中:
+
+apt update && apt install docker-compose
+
+```
+
+<br>
+
+# docker-mcsm_发布版
 
 ## Usage
 
@@ -6,7 +20,7 @@
 
 git clone https://github.com/zijiren233/docker-mcsm
 
-cd docker-mcsm/releases
+cd ./docker-mcsm/releases
 
 docker-compose up -d --build
 
@@ -16,7 +30,9 @@ docker-compose up -d --build
     - `java17 -jar server.jar`
     - `java8 -jar server.jar`
 
-# docker-mcsm_dev
+<br>
+
+# docker-mcsm_开发版
 
 ## Usage
 
@@ -24,7 +40,7 @@ docker-compose up -d --build
 
 git clone https://github.com/zijiren233/docker-mcsm
 
-cd docker-mcsm/dev
+cd ./docker-mcsm/dev
 
 docker-compose up -d --build
 
