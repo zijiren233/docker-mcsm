@@ -10,7 +10,7 @@ apt update && apt install docker-compose
 
 ```
 
-- 支持 docker 容器内调用宿主机 docker 来启动服务器
+- 现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
 
 <br>
 
