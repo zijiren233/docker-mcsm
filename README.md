@@ -30,7 +30,7 @@ docker-compose up -d --build
 
 - 发布版 daemon(后端): http://ip:24444
 
-- 发布版中自带 java8 java11 java16 java17, 运行不同版本java服务器直接输入 `java(版本号即可)`
+- 发布版中自带 java8 java16 java17, 运行不同版本java服务器直接输入 `java(版本号即可)`
     - `java17 -jar server.jar`
     - `java8 -jar server.jar`
 
