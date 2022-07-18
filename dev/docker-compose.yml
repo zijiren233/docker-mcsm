@@ -10,7 +10,7 @@ services:
         volumes:
             - "./mcsmanager/data:/workspace/data"
             - "./mcsmanager/logs:/workspace/logs"
-            - "./daemon:/daemon"
+            - "./daemon:/daemon:ro"
     mcsm-ui-dev:
         container_name: mcsm-ui-dev
         build:

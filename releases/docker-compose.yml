@@ -10,6 +10,7 @@ services:
         volumes:
             - "./web/data:/workspace/data"
             - "./web/logs:/workspace/logs"
+            - "./daemon:/daemon:ro"
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
