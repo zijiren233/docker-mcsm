@@ -10,6 +10,8 @@ apt update && apt install docker-compose
 
 ```
 
+- 支持 docker 容器内调用宿主机 docker 来启动服务器
+
 <br>
 
 # docker-mcsm_发布版
@@ -30,9 +32,9 @@ docker-compose up -d --build
 
 - 发布版 daemon(后端): http://ip:24444
 
-- 发布版中不携带 java,要运行 java 程序请在 mcsm面板->环境镜像->环境镜像管理->新建镜像中自行构建
+- 发布版中不携带 java,如需运行 java 程序请在 `mcsm面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
 
-    - 实例设置中的进程启动方式选择 `虚拟化容器`
+    - 实例设置中的 `进程启动方式` 选择 `虚拟化容器`
 
 - 关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
 
