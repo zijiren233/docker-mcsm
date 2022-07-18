@@ -8,9 +8,9 @@ services:
         network_mode: "host"
         restart: always
         volumes:
-            - "./web/data:/workspace/data"
-            - "./web/logs:/workspace/logs"
-            - "./daemon:/daemon:ro"
+            - "/opt/docker-mcsm/releases/web/data:/opt/docker-mcsm/releases/web/data"
+            - "/opt/docker-mcsm/releases/web/logs:/opt/docker-mcsm/releases/web/logs"
+            - "/opt/docker-mcsm/releases/daemon/data/Config:/opt/docker-mcsm/releases/daemon/data/Config:ro"
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
@@ -19,5 +19,6 @@ services:
         network_mode: "host"
         restart: always
         volumes:
-            - "./daemon/data:/workspace/data"
-            - "./daemon/logs:/workspace/logs"
+            - "/opt/docker-mcsm/releases/daemon/data:/opt/docker-mcsm/releases/daemon/data"
+            - "/opt/docker-mcsm/releases/daemon/logs:/opt/docker-mcsm/releases/daemon/logs"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"

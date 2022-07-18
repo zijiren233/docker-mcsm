@@ -1,9 +1,8 @@
-FROM node:14-bullseye-slim
+FROM node:14-slim
 RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
-RUN apt update
-RUN apt install -y git libcurl4 openjdk-17-jre
-RUN git clone https://github.com/MCSManager/Daemon /workspace
-RUN cd /workspace && npm i --registry=https://registry.npmmirror.com
+RUN apt update && apt install -y git
+RUN git clone https://github.com/MCSManager/Daemon /opt/docker-mcsm/dev/daemon
+RUN cd /opt/docker-mcsm/dev/daemon && npm i --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
-WORKDIR /workspace
+WORKDIR /opt/docker-mcsm/dev/daemon
 CMD npm run start
