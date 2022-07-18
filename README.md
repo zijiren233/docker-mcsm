@@ -30,11 +30,9 @@ docker-compose up -d --build
 
 - 发布版 daemon(后端): http://ip:24444
 
-- 发布版中自带 java8 java16 java17, 运行不同版本java服务器直接输入 `java(版本号即可)`
-    - `java17 -jar server.jar`
-    - `java8 -jar server.jar`
+- 发布版中不携带 java,要运行 java 程序请在 mcsm面板->环境镜像->环境镜像管理->新建镜像中自行构建
 
-- 请勿尝试在 Docker 容器内安装 Docker, 后端可直接运行 Minecraft Bedrock Server
+    - 实例设置中的进程启动方式选择 `虚拟化容器`
 
 - 关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
 
@@ -61,6 +59,3 @@ docker-compose up -d --build
 - 开发版 MCSManager(控制面板端): http://ip:23333
 
 - 开发版 Daemon(守护进程): http://ip:24444
-
-- 开发版中只包含 java17, java程序已在环境变量中
-    - `java -jar server.jar`
