@@ -1,0 +1,8 @@
+FROM node:14-alpine
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN apk --no-cache add git openssh
+RUN git clone https://github.com/MCSManager/MCSManager /workspace
+RUN cd /workspace && mkdir public && npm i --registry=https://registry.npmmirror.com
+ENV TZ=Asia/Shanghai
+WORKDIR /workspace
+CMD npm run start

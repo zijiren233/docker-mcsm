@@ -1,0 +1,33 @@
+version: "3"
+services:
+    mcsm-mcsmanager-dev:
+        container_name: mcsm-mcsmanager-dev
+        build:
+            context: .
+            dockerfile: dockerfile-mcsmanager
+        network_mode: "host"
+        restart: always
+        volumes:
+            - "./mcsmanager/data:/workspace/data"
+            - "./mcsmanager/logs:/workspace/logs"
+            - "./daemon:/daemon"
+    mcsm-ui-dev:
+        container_name: mcsm-ui-dev
+        build:
+            context: .
+            dockerfile: dockerfile-ui
+        network_mode: "host"
+        restart: always
+        volumes:
+            - "./ui/data:/workspace/data"
+            - "./ui/logs:/workspace/logs"
+    mcsm-daemon-dev:
+        container_name: mcsm-daemon-dev
+        build:
+            context: .
+            dockerfile: dockerfile-daemon
+        network_mode: "host"
+        restart: always
+        volumes:
+            - "./daemon/data:/workspace/data"
+            - "./daemon/logs:/workspace/logs"
