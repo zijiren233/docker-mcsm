@@ -5,30 +5,36 @@ services:
         build:
             context: .
             dockerfile: dockerfile-mcsmanager
+            args:
+                INSTALL_PATH: $INSTALL_PATH
         network_mode: "host"
         restart: always
         volumes:
-            - "/opt/docker-mcsm/dev/mcsmanager/data:/opt/docker-mcsm/dev/mcsmanager/data"
-            - "/opt/docker-mcsm/dev/mcsmanager/logs:/opt/docker-mcsm/dev/mcsmanager/logs"
-            - "/opt/docker-mcsm/dev/daemon/data/Config:/opt/docker-mcsm/dev/daemon/data/Config:ro"
+            - $INSTALL_PATH/dev/mcsmanager/data:$INSTALL_PATH/dev/mcsmanager/data
+            - $INSTALL_PATH/dev/mcsmanager/logs:$INSTALL_PATH/dev/mcsmanager/logs
+            - $INSTALL_PATH/dev/daemon/data/Config:$INSTALL_PATH/dev/daemon/data/Config:ro
     mcsm-ui-dev:
         container_name: mcsm-ui-dev
         build:
             context: .
             dockerfile: dockerfile-ui
+            args:
+                INSTALL_PATH: $INSTALL_PATH
         network_mode: "host"
         restart: always
         volumes:
-            - "/opt/docker-mcsm/dev/ui/data:/opt/docker-mcsm/dev/ui/data"
-            - "/opt/docker-mcsm/dev/ui/logs:/opt/docker-mcsm/dev/ui/logs"
+            - $INSTALL_PATH/dev/ui/data:$INSTALL_PATH/dev/ui/data
+            - $INSTALL_PATH/dev/ui/logs:$INSTALL_PATH/dev/ui/logs
     mcsm-daemon-dev:
         container_name: mcsm-daemon-dev
         build:
             context: .
             dockerfile: dockerfile-daemon
+            args:
+                INSTALL_PATH: $INSTALL_PATH
         network_mode: "host"
         restart: always
         volumes:
-            - "/opt/docker-mcsm/dev/daemon/data:/opt/docker-mcsm/dev/daemon/data"
-            - "/opt/docker-mcsm/dev/daemon/logs:/opt/docker-mcsm/dev/daemon/logs"
-            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+            - $INSTALL_PATH/dev/daemon/data:$INSTALL_PATH/dev/daemon/data
+            - $INSTALL_PATH/dev/daemon/logs:$INSTALL_PATH/dev/daemon/logs
+            - /var/run/docker.sock:/var/run/docker.sock:ro

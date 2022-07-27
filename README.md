@@ -12,11 +12,11 @@ apt update && apt install docker-compose
 
 - 现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
 
-    - 注意：如果要 `修改挂载目录` 请一定要保证 `宿主机挂载目录` 和 `挂载到容器内的目录` 要一模一样！即 docker-compose 里面的挂载目录和 dockerfile 内程序的安装目录都要同时修改！
+    - 注意：如果要 `修改挂载目录` 只需要修改 `.env` 文件中的 `INSTALL_PATH`, 目录结尾不要有斜线!!！
 
-- 如果完全按照教程安装不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm/` 下
+- 若不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm` 下
 
-- 如果您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请使用 `releases-unraid` 目录下的 docker-compose 和 dockerfile。
+- 若您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请修改 `.env` 文件中 `INSTALL_PATH=/mnt/user/appdata`。
 
     - 此时 docker-mcsm 的所有数据会保存到 `/mnt/user/appdata/docker-mcsm` 目录下
 

@@ -1,8 +1,9 @@
 FROM node:14-alpine
+ARG INSTALL_PATH=/opt/docker-mcsm
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 RUN apk --no-cache add git openssh
-RUN git clone https://github.com/MCSManager/MCSManager /opt/docker-mcsm/dev/mcsmanager
-RUN cd /opt/docker-mcsm/dev/mcsmanager && mkdir public && npm i --registry=https://registry.npmmirror.com
+RUN git clone https://github.com/MCSManager/MCSManager $INSTALL_PATH/dev/mcsmanager
+RUN cd $INSTALL_PATH/dev/mcsmanager && mkdir public && npm i --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
-WORKDIR /opt/docker-mcsm/dev/mcsmanager
+WORKDIR $INSTALL_PATH/dev/mcsmanager
 CMD npm run start

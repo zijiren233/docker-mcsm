@@ -1,8 +1,0 @@
-FROM node:14-slim
-RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
-RUN apt update && apt install -y git
-RUN git clone https://github.com/MCSManager/MCSManager-Daemon-Production /mnt/user/appdata/docker-mcsm/releases/daemon
-RUN cd /mnt/user/appdata/docker-mcsm/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
-ENV TZ=Asia/Shanghai
-WORKDIR /mnt/user/appdata/docker-mcsm/releases/daemon
-CMD node app.js

@@ -5,20 +5,24 @@ services:
         build:
             context: .
             dockerfile: dockerfile-web
+            args:
+                INSTALL_PATH: $INSTALL_PATH
         network_mode: "host"
         restart: always
         volumes:
-            - "/opt/docker-mcsm/releases/web/data:/opt/docker-mcsm/releases/web/data"
-            - "/opt/docker-mcsm/releases/web/logs:/opt/docker-mcsm/releases/web/logs"
-            - "/opt/docker-mcsm/releases/daemon/data/Config:/opt/docker-mcsm/releases/daemon/data/Config:ro"
+            - $INSTALL_PATH/releases/web/data:$INSTALL_PATH/releases/web/data
+            - $INSTALL_PATH/releases/web/logs:$INSTALL_PATH/releases/web/logs
+            - $INSTALL_PATH/releases/daemon/data/Config:$INSTALL_PATH/releases/daemon/data/Config:ro
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
             context: .
             dockerfile: dockerfile-daemon
+            args:
+                INSTALL_PATH: $INSTALL_PATH
         network_mode: "host"
         restart: always
         volumes:
-            - "/opt/docker-mcsm/releases/daemon/data:/opt/docker-mcsm/releases/daemon/data"
-            - "/opt/docker-mcsm/releases/daemon/logs:/opt/docker-mcsm/releases/daemon/logs"
-            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+            - $INSTALL_PATH/releases/daemon/data:$INSTALL_PATH/releases/daemon/data
+            - $INSTALL_PATH/releases/daemon/logs:$INSTALL_PATH/releases/daemon/logs
+            - /var/run/docker.sock:/var/run/docker.sock:ro
