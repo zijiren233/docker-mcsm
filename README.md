@@ -28,11 +28,23 @@ apt update && apt install docker-compose
 
 ```shell
 
+运行:
+
 git clone https://github.com/zijiren233/docker-mcsm
 
 cd ./docker-mcsm/releases
 
-docker-compose up -d --build
+docker-compose up -d
+
+更新:
+
+cd ./docker-mcsm/releases
+
+docker-compose down
+
+docker-compose build --no-cache
+
+docker-compose up -d
 
 ```
 
@@ -60,7 +72,7 @@ git clone https://github.com/zijiren233/docker-mcsm
 
 cd ./docker-mcsm/dev
 
-docker-compose up -d --build
+docker-compose up -d
 
 ```
 
