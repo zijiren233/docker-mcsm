@@ -6,35 +6,35 @@ services:
             context: .
             dockerfile: dockerfile-mcsmanager
             args:
-                INSTALL_PATH: $INSTALL_PATH
+                INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
         network_mode: "host"
         restart: always
         volumes:
-            - $INSTALL_PATH/dev/mcsmanager/data:$INSTALL_PATH/dev/mcsmanager/data
-            - $INSTALL_PATH/dev/mcsmanager/logs:$INSTALL_PATH/dev/mcsmanager/logs
-            - $INSTALL_PATH/dev/daemon/data/Config:$INSTALL_PATH/dev/daemon/data/Config:ro
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/mcsmanager/data:${INSTALL_PATH-/opt/docker-mcsm}/dev/mcsmanager/data
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/mcsmanager/logs:${INSTALL_PATH-/opt/docker-mcsm}/dev/mcsmanager/logs
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/data/Config:${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/data/Config:ro
     mcsm-ui-dev:
         container_name: mcsm-ui-dev
         build:
             context: .
             dockerfile: dockerfile-ui
             args:
-                INSTALL_PATH: $INSTALL_PATH
+                INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
         network_mode: "host"
         restart: always
         volumes:
-            - $INSTALL_PATH/dev/ui/data:$INSTALL_PATH/dev/ui/data
-            - $INSTALL_PATH/dev/ui/logs:$INSTALL_PATH/dev/ui/logs
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/ui/data:${INSTALL_PATH-/opt/docker-mcsm}/dev/ui/data
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/ui/logs:${INSTALL_PATH-/opt/docker-mcsm}/dev/ui/logs
     mcsm-daemon-dev:
         container_name: mcsm-daemon-dev
         build:
             context: .
             dockerfile: dockerfile-daemon
             args:
-                INSTALL_PATH: $INSTALL_PATH
+                INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
         network_mode: "host"
         restart: always
         volumes:
-            - $INSTALL_PATH/dev/daemon/data:$INSTALL_PATH/dev/daemon/data
-            - $INSTALL_PATH/dev/daemon/logs:$INSTALL_PATH/dev/daemon/logs
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/data:${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/data
+            - ${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/logs:${INSTALL_PATH-/opt/docker-mcsm}/dev/daemon/logs
             - /var/run/docker.sock:/var/run/docker.sock:ro
