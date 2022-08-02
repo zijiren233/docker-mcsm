@@ -2,7 +2,7 @@ FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
 RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y git
-RUN git clone https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
+RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
 RUN cd $INSTALL_PATH/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/releases/daemon
