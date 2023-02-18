@@ -1,9 +1,10 @@
-FROM node:14-alpine
+FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk --no-cache add git
+ARG TZ=Asia/Shanghai
+ENV TZ=${TZ}
+RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN apt update && apt install -y git
 RUN git clone --single-branch -b master --depth 1 https://github.com/MCSManager/UI $INSTALL_PATH/dev/ui
 RUN cd $INSTALL_PATH/dev/ui && npm i --registry=https://registry.npmmirror.com
-ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/dev/ui
 CMD npm run start
